@@ -4,6 +4,8 @@
     <h1>{{ msg }}</h1>
     <li v-for="mach in machines"><a href="#">
       {{mach.machines}}
+      {{mach.active}}
+      <input v-model="mach.active" type="checkbox">
     </a></li>
   </div>
 </template>
@@ -11,19 +13,19 @@
 <script>
 export default {
   name: 'app',
-  data () {
+  data: function () {
     return {
       msg: 'List of Coffee Machines',
       machines: [
-        {machines: 'Machine1'},
-        {machines:'Machine2'},
-        {machines:'Machine3'}
+        {machines: 'Machine1',
+         active: true
+        },
+        {machines: 'Machine2',
+         active:false
+        },
+
       ],
-      methods: {
-        active: function(){
-          console.log(status);
-        }
-      }
+
     }
   }
 }
@@ -49,8 +51,9 @@ ul {
 }
 
 li {
-  display: inline-block;
-  margin: 0 10px;
+  list-style: none;
+  
+  margin: 50px;
 }
 
 a {
