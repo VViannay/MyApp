@@ -2,11 +2,11 @@
   <div id="app">
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
-    <li v-for="mach in machines"><a href="#">
-      {{mach.machines}}
-      {{mach.active}}
+    <p>Use the checkbox for active/desactive:</p>
+    <li v-for="mach in machines">
       <input v-model="mach.active" type="checkbox">
-    </a></li>
+      <h3 :class="{inactive: !mach.active}">{{mach.machines}}</h3>
+    </li>
   </div>
 </template>
 
@@ -17,10 +17,10 @@ export default {
     return {
       msg: 'List of Coffee Machines',
       machines: [
-        {machines: 'Machine1',
+        {machines: 'Nesspresso Coffee :',
          active: true
         },
-        {machines: 'Machine2',
+        {machines: 'Moulinex Coffee :',
          active:false
         },
 
@@ -52,11 +52,14 @@ ul {
 
 li {
   list-style: none;
-  
+
   margin: 50px;
 }
 
-a {
+li {
   color: #42b983;
 }
+  .inactive {
+    color: dimgrey;
+  }
 </style>
